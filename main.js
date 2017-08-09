@@ -1,4 +1,2 @@
 //Expose src
-let mod = module.exports = {};
-
-mod.Rules = require('./src/rules.js');
+ module.exports = require('./src/rules.js');
