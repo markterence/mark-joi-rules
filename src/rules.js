@@ -17,7 +17,7 @@ module.exports = {
 			}
 		}),
 	},
-	poeple:{
+	people:{
 		age: Joi.number().positive()
 	}
 }
