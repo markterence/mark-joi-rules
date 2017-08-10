@@ -1,9 +1,25 @@
-// let modules = modulel.export = {};
+var Joi = require('Joi');
 
-// modules.validate = (data, schema, errors) => {
-// 	let ret = Joi.validate (data, schema.data, schema.options);
-// 	if(ret.err){
-// 		let errors = [];
-// 		ret.errors.details.forea
-// 	}
-// }
+let modules = module.exports = {};
+
+modules.validate = (data, schema)=> {
+	let ret = Joi.validate(data, schema, {
+		allowUnknown: true,
+		abortEarly:false
+	});
+
+	if(ret.error){
+		let errors = [];
+		ret.error.details.forEach((element) => {
+			errors.push({
+				key: element.path,
+				value:element.message
+			});
+		});
+		return ({error:true, errors: errors});
+	}
+	else{
+		return ({error:false});
+	}
+};
+
